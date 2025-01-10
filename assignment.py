@@ -15,7 +15,12 @@ def fizz_buzz(number):
     >>> fizz_buzz(15)
     'FizzBuzz'
     """
-    return
+    result = ""
+    if number % 3 == 0:
+        result += "Fizz"
+    if number % 5 == 0:
+        result += "Buzz"
+    return result if result else number
 
 
 # Question 2
@@ -30,7 +35,7 @@ def sum_of_squares(numbers):
     >>> sum_of_squares([2, 4, 6])
     56
     """
-    return
+    return sum(x ** 2 for x in numbers)
 
 
 # Question 3
@@ -45,7 +50,12 @@ def count_vowels(string):
     >>> count_vowels("aeiou")
     5
     """
-    return
+    vowels = 'aeiou'
+    count = 0
+    for char in string.lower():
+        if char in vowels:
+            count += 1
+    return count
 
 
 # Question 4
@@ -60,10 +70,15 @@ def count_repeats(string):
     >>> count_repeats("aeiou")
     0
     """
-    return
+    char_count = {}
+    for char in string:
+        char_count[char] = char_count.get(char, 0) + 1
+
+    repeat_count = sum(count for count in char_count.values() if count > 1)
+
+    return repeat_count
 
 
 if __name__ == "__main__":
     import doctest
-
     doctest.testmod(verbose=True)
